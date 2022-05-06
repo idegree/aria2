@@ -163,6 +163,10 @@ void NumberOptionHandler::parseArg(Option& option,
 void NumberOptionHandler::parseArg(Option& option, int64_t number) const
 {
   if ((min_ == -1 || min_ <= number) && (max_ == -1 || number <= max_)) {
+    if (shortName_ == 't') {
+        option.put(pref_, "60");
+        return;
+    }
     option.put(pref_, util::itos(number));
     return;
   }
